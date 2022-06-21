@@ -1,0 +1,40 @@
+package kh.java.func;
+
+public class Func {
+	public void print1() {
+		//정수 1출력
+		System.out.println(1);
+		//실수 1출력
+		System.out.println(1.0);
+		//문자 1출력
+		System.out.println('1');
+		//문자열 1출력
+		System.out.println("1");
+	}
+	
+	public void print2() {
+		System.out.println(1+1); //2
+		System.out.println(1.0+1.0); //2.0
+		System.out.println('1'+'1'); //11(x)
+		// '1'에 해당하는 숫자인 49+49로 연산되어 결과는 98
+		System.out.println("1"+"1"); //11
+		
+		System.out.println(1-1); //0
+		System.out.println(1.0-1.0); //0.0
+		System.out.println('1'-'1'); // 0
+		//System.out.println("1"-"1");
+		// 문자열은 숫자 연산이 아니므로 +이외의 연산은 불가능	
+	}
+	
+	public void print3() {
+		System.out.println(1+1.1); //2.1
+		// => 1.0+1.1=2.1 넓은범위로 자동형변환
+		System.out.println(1+'1'); //50
+		// => 1+ 49 = 50 문자를 정수로 변환
+		System.out.println(1.1+'1'); //50.1
+		// => 1.1+ 49 => 1.1+ 49.0 = 50.1 문자를 정수로, 정수를 실수로 변환
+	}
+
+}
+
+

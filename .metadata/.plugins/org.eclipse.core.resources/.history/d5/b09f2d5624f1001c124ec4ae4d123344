@@ -1,0 +1,48 @@
+package kh.java.func;
+
+public class Variable {
+	public void var1() {
+		//변수를 선언하는 방법 : 자료형 변수명;
+		//1. 논리형 변수를 선언
+		boolean bool;
+		//2. 문자형 변수 선언
+		char ch;
+		//3. 정수형 변수 선언 (byte, short, int, long)
+		int num;
+		//4. 실수형 변수 선언 (float, double)
+		double dNum;
+		
+		//변수에 데이터를 저장하는 방법 > 대입연산자(=)
+		//a=b; > b라는 값을 a변수에 대입
+		
+		num = 10;
+		System.out.println(num);
+		
+		//문자형
+		ch = 'A';
+		char ch2 = 65;
+		System.out.println(ch);
+		System.out.println(ch2);
+		
+		//논리형 변수에 true 대입 후 출력
+		bool = true;
+		System.out.println(bool);
+		
+		dNum = 3.14;
+		System.out.println(dNum);
+		
+		System.out.println(num+dNum);
+		
+		long lNum; //int 4byte < long 8byte
+		lNum = 1000l; //작은 양을 큰 통에 넣는 것 => 가능
+		float fNum; //float 4byte < double 8byte
+		fNum = 3.14f; //큰 양을 작은 통에 넣는 것 => 불가능
+		
+		// l, f를 붙여서 리터럴로 만들어 줌
+	}
+	
+	public void var2() {
+		double dNum1 = 3.14;
+		System.out.println(dNum1);
+	}
+}

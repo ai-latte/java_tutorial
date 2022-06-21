@@ -1,0 +1,16 @@
+package kh.java.func;
+
+public class info {
+	public void inf() {
+		// 이름 나이 성별 주소 전화번호 이메일
+		String name = "이은비";
+		int age = 30;
+		String sex = "여";
+		String addr = "행신동";
+		String phoneNum = "01077478579";
+		String email = "";
+		System.out.printf("이름   나이%5d성별%5d지역%5d전화번호%10d이메일%10d");
+		System.out.println(-------------------------------------------);
+		System.out.printf("%s  %d %d %s %s %s);
+	}
+}

@@ -1,0 +1,17 @@
+package kh.java.test; //package명
+
+public class HelloJava { //class 시작
+
+	public static void main(String[] args) { //method 시작
+		// TODO Auto-generated method stub
+		System.out.println("Latteunnie1");
+		System.out.println("Latteunnie2");
+		//System.out.println("Latteunnie3");
+		System.out.println("Latteunnie4");
+	} //method 끝
+
+} //class 끝
+
+//ctrl+shift+f > 자동 K&R
+
+

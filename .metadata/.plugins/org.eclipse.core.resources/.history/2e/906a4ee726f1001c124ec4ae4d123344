@@ -1,0 +1,13 @@
+package kh.java.run;
+import kh.java.func.Variable;
+public class Start {
+
+	public static void main(String[] args) {
+		Variable vr = new Variable();
+		vr.var1();
+		vr.var2();
+		vr.var3();
+		
+	}
+
+}

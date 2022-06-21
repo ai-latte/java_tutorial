@@ -1,0 +1,13 @@
+package kh.java.test;
+
+public class HelloJava {
+	
+	public static void main(String[] args) {
+		System.out.println("Latteunnie1");
+		/*System.out.println("Latteunnie2");
+		System.out.println("Latteunnie3");
+		System.out.println("Latteunnie4");*/ 
+	}	//범위주석
+} 
+
+
