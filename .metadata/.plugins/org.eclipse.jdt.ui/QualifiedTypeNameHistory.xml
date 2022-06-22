@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.khmarket.vo.Goods"/>
+    <fullyQualifiedTypeName name="kr.or.iei.vo.information"/>
+    <fullyQualifiedTypeName name="kh.java.func.Func"/>
+    <fullyQualifiedTypeName name="kh.java.function.Example"/>
+    <fullyQualifiedTypeName name="kh.java.func.Oper"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+</qualifiedTypeNameHistroy>

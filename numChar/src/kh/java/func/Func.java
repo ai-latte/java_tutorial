@@ -1,6 +1,6 @@
 package kh.java.func;
 
-public class Func {
+public class Func { //기능메서드가 있는 클래스
 	public void print1() {
 		//정수 1출력
 		System.out.println(1);
@@ -51,8 +51,4 @@ public class Func {
 		System.out.println(10+20+"Hello"); //연산 우선순위 동일
 		System.out.println(10+(20+"Hello")); //10+"20Hello"
 	}
-
-	
 }
-
-
