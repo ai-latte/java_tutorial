@@ -34,7 +34,7 @@ public class Start {
 		
 		
 		Scan sc = new Scan();
-		// sc.scan1();
+		sc.scan1();
 		sc.scanExam1();
 		sc.scanExam2();
 

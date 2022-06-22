@@ -2,7 +2,7 @@ package kh.java.func;
 import java.util.Scanner;
 public class Scan {
 	
-	/*
+
 	 	public void scan1() {
 		//키보드로 값을 입력받는 방법
 		// 1) import java.util.Scanner;
@@ -36,7 +36,7 @@ public class Scan {
 		System.out.print("문자를 입력하세요. : ");
 		char ch = sc.next().charAt(0); //charAt(인덱스번호) < 첫번째 문자를 가져오겠다.
 		System.out.println(ch);
-	} */
+	}
 	
 	
 	public void scanExam1() {
@@ -46,7 +46,7 @@ public class Scan {
 		System.out.print("나이를 입력하세요 : ");
 		int age = scn.nextInt();
 		System.out.print("주소를 입력하세요. : ");
-		scn.nextLine();
+		scn.nextLine(); //스트링을 중간에 받으면, 받기 전에 버퍼를 제거한다.
 		String adr = scn.nextLine();
 		System.out.print("키를 입력하세요. : ");
 		double height = scn.nextDouble();
@@ -57,12 +57,12 @@ public class Scan {
 		char gender = scn.next().charAt(0);
 		
 		
-		System.out.println(name);
-		System.out.println(age);
-		System.out.println(adr);
-		System.out.println((int)height);
-		System.out.println((int)tmp);
-		System.out.println(gender);
+		System.out.println("이름 : "+name);
+		System.out.println("나이 : "+age);
+		System.out.println("주소 : "+adr);
+		System.out.println("키 : "+(int)height);
+		System.out.println("몸무게 : "+(int)tmp);
+		System.out.println("성별 : "+gender);
 		
 	}
 	
@@ -78,8 +78,6 @@ public class Scan {
 		
 		int sum = kor + eng + mat;
 		
-		System.out.println("점수 합 : "+sum);
-		System.out.println("평균은 : "+(sum/3));
-	}
-
+		System.out.printf("당신의 총점수는 %d점이고, 평균은 %.2f입니다.", sum, (double)(sum/3));
+	} 	
 }
