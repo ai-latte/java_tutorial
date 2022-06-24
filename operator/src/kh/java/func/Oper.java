@@ -98,7 +98,7 @@ public class Oper {
 		System.out.print("나이를 입력하세요. : ");
 		
 		int age = sc.nextInt();
-		//삼항연산자 =>	조건식?true인경우:flase인경우;	
+		//삼항연산자 =>	조건식?true인경우:false인경우;	
 		
 		String msg = age>19? "성인입니다.": "미성년자입니다";
 		//       앞에 조건에 따라서 ? 뒤에 값이 남는다
