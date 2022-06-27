@@ -154,6 +154,11 @@ public class ifTest {
 		}		//범위를 else if로 연결하는 경우 좁은 범위가 위로 가야 함
 	}
 	
+	
+	
+	//------------------------------------------
+	
+	
 	public void exam1() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("입장하실 총 인원은 몇명입니까? : ");
@@ -192,7 +197,7 @@ public class ifTest {
 			System.out.println("땡~ㅎ");
 		}
 		
-		
+		/*
 		if (anw1.equals("1")&& anw2.equals("2")) {
 			System.out.println("총 2문제를 맞혔습니다.");
 		} else if (anw1.equals("2")&& anw2.equals("1")) {
@@ -200,6 +205,13 @@ public class ifTest {
 		} else {
 			System.out.println("총 1문제를 맞혔습니다.");
 		}
+		아래 코드로 변경*/
+	
+		if(anw1.equals("1")) {
+			System.out.println(anw2.equals("2")? "총 2문제를 맞혔습니다.": "총 1문제를 맞혔습니다.");
+		} else{ System.out.println(anw2.equals("1")? "총 0문제 맞혔습니다.": "총 1문제 맞혔습니다.");
+		}
+		
 	}
 
 	
@@ -228,6 +240,8 @@ public class ifTest {
 		}
 	}
 	
+	
+	// !!! 비교는 무조건 논리형
 	public void exam4() { // A=65~90 a=97~122
 		System.out.println("=======대/소문자 변환 프로그램========");
 		Scanner sc = new Scanner(System.in);
@@ -237,13 +251,17 @@ public class ifTest {
 		if(65<=alp&&90>=alp) {
 			System.out.println("대문자를 입력하였습니다.");
 			System.out.println("소문자로 변환 : "+(char)(alp+32));			
-		} else if(97<=alp&&122>=alp) {
+		} else if('a'<=alp&&'z'>=alp) { //97, 122를 소문자로 적어도 가능 (문자형만)
 			System.out.println("소문자를 입력하였습니다.");
-			System.out.println("대문자로 변환 : "+(char)(alp-32));	
+			System.out.println("대문자로 변환 : "+(char)(alp-32));
 		} else {
 			System.out.println("잘못입력하셨습니다. 영문자를 입력해주세요.");
 		}
+		
+		// XOR연산을 이용해 "소문자로 변환 : "+(char)(alp^32) 이것도 가능!
 	}
+	
+	
 	
 	public void exam5() { //3의배수, //4의배수
 		System.out.println("======3/4의 배수=======");
@@ -251,22 +269,33 @@ public class ifTest {
 		System.out.print("정수입력 : ");
 		int num = sc.nextInt();
 		
-		if(num<0) {
-			System.out.println("다시 입력하세요.");
-		} else {
-			if(num%3==0) {
-				if(num==0) {
-						System.out.println("[0]은(는) 3의 배수도 4의 배수도 아닙니다.");
-				} else if(num%4==0) {
-						System.out.printf("[%d]은(는) 3의 배수면서, 4의 배수입니다.", num);
-				} else {
-						System.out.printf("[%d]은(는) 3의 배수입니다.", num); }
+		if(num%3==0) {
+			if(num==0&&num<0) {
+					System.out.println("[0]은(는) 3의 배수도 4의 배수도 아닙니다.");
 			} else if(num%4==0) {
-					System.out.printf("[%d]은(는) 4의 배수입니다.", num);
+						System.out.printf("[%d]은(는) 3의 배수면서, 4의 배수입니다.", num);
 			} else {
+						System.out.printf("[%d]은(는) 3의 배수입니다.", num); }
+		} else if(num%4==0) {
+					System.out.printf("[%d]은(는) 4의 배수입니다.", num);
+		} else {
 					System.out.printf("[%d]은(는) 3의 배수도 4의 배수도 아닙니다.", num);
 			
-		} //0보다 작은 경우/아닌 경우 > 3의 배수 4의 배수, 둘다 아닌 경우 (3의 배수 안에서 0, 3의배수가 아닌 경우 분류)
+		} //3의 배수 4의 배수, 둘다 아닌 경우 (3의 배수 안에서 0, 3의배수가 아닌 경우 분류)
+		
+		/*
+		<<<if, else if는 진행순서를 생각하여 짜야한다.>>>
+		
+			4. 0은 좁은범위이므로 위로 올라와야 한다.
+		if(num == 0 || (num%3 != 0 && num%4 != 0))
+			5. 3의 배수도 4의 배수도 아닌 출력문은 같으므로 합친다.
+		
+		if(num%3 == 0 && num%4 == 0) {
+			1. 둘중 하나는 나머지가 있다는 뜻이다. 아래로 내려옴
+		else if(num%3 == 0)
+			2. 3의 배수 거르고,
+		else if(num%4 == 0)
+			3. 4의 배수 거른다.
+		 */
 		}
 	}
-}
