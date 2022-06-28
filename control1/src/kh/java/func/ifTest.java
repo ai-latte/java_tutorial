@@ -248,7 +248,7 @@ public class ifTest {
 		System.out.print("문자입력 : ");
 		char alp = sc.next().charAt(0);
 		
-		if(65<=alp&&90>=alp) {
+		if(65<=alp&&90>=alp) { //  a=65 1=49
 			System.out.println("대문자를 입력하였습니다.");
 			System.out.println("소문자로 변환 : "+(char)(alp+32));			
 		} else if('a'<=alp&&'z'>=alp) { //97, 122를 소문자로 적어도 가능 (문자형만)

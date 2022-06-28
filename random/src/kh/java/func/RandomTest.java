@@ -401,5 +401,68 @@ public class RandomTest {
 	 * 
 	 * 
 	 */
+	
+	
+	
+	
+	
+	// up&dowm
+			// com = 1~100의 난수를 가진다.
+			// user > com {down}
+			// user < com {up}
+	
+	
+	
+	public void practice() {
+		Random r = new Random();
+		Scanner sc = new Scanner(System.in);
+		
+		int com = r.nextInt(100)+1;
+		int score = 0;
+		
+		//메뉴 선택
+		
+		while(true) {
+			System.out.println("1 Game Start!");
+			System.out.println("2 Game Score!");
+			System.out.println("3 End Game !");
+			System.out.print("메뉴를 선택해 주세요.");
+			int select = sc.nextInt();
+			if(select==1) {
+				while(true) {
+					int count = 1;
+					System.out.print(count+"번째 숫자를 입력하세요. : ");
+					int num = sc.nextInt();
+					if(num>com) {
+						System.out.println("down~");
+					} else if(num<com) {
+						System.out.println("up!");
+					} else { //맞으면?
+						System.out.println("정답!");
+						if (score == 0 || score>count) {
+							score = count;
+						}
+						break;
+					} count++;
+				}
+			
+			} else if (select==2) {
+				if(score==0) {
+					System.out.println("아직 1번도 게임을 하지 않았습니다.");
+				} else {
+					System.out.println("당신의 전적은 "+score+"입니다.");
+				}
+			} else {
+				System.out.println("안녕");
+				break;
+			}
+		}
+		
+		
+	}
+	
+	
+	
+	
 
 } // class end
