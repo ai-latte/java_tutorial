@@ -437,8 +437,60 @@ public class ArrayTest {
 		default :
 			System.out.println("꽝~!");
 		}
-		
-		
 	}//end of method
 	
+	
+	
+	public void motel() {
+		Scanner sc = new Scanner(System.in);
+		int[] rooms = new int[10];
+		// 배열의 각 인덱스가 방을 의미
+		// 0 0 0 0 0 0 0 0 0 0 
+		// = 손님이 없는 비어있는 방
+		// 손님이 있는 방은 1로 변경
+		// 0 / 1 true; false;
+		// boolean[] rooms로  > false  / true;
+		
+		
+		while(true) {
+			System.out.println("모텔 관리 프로그램");
+			System.out.println("1.입실  2.퇴실  3.방보기  4.종료 ");
+			System.out.print("선택 >  ");
+			int select = sc.nextInt();
+			
+			if(select==1) {
+				System.out.print("몇 번 방에 입실하시겠습니까? > ");
+				int num = sc.nextInt(); //2
+				if(rooms[num-1] == 0) {
+					rooms[num-1] = 1;
+					} else {
+					System.out.println("이미 선택된 방입니다.");
+				}
+
+			} else if (select==2) {
+				System.out.print("몇 번 방에서 퇴실하시겠습니까? > ");
+				int num = sc.nextInt();
+				if(rooms[num-1] == 0) {
+					System.out.println(num+"번 방은 빈 방입니다.");
+				} else {
+					rooms[num-1] = 0;
+				}
+				
+				
+			} else if(select==3) {
+				for(int i=0; i<rooms.length; i++) {// room = 1~10 //rooms 0~1
+					if(rooms[i] == 0) {
+					System.out.println((i+1)+"번 방은 현재 비어있습니다.");
+					} else {
+						System.out.println((i+1)+"번 방은 현재 손님이 있습니다.");
+					}
+				}
+			} else {
+				break;
+			}
+		}
+	}//메서드끝
+	
+	
+		
 } //end of class
