@@ -231,7 +231,6 @@ public class ArrayTest2 {
 				for(int j=0; j<=4; j++) {
 					arr[i][j] = num++;
 				}
-				
 			} else {
 				for(int j=4; j>=0; j--) {
 					arr[i][j] = num++;
@@ -245,7 +244,40 @@ public class ArrayTest2 {
 			} System.out.println();
 		}
 	}
+	
+	
+	
+	
+	
+	
+
+	/*
+	 * [0][0] [0][1] [0][2] [0][3] [0][4]  +5
+	 * [1][0] [1][1] [1][2] [1][3] [1][4]
+	 * [2][0] [2][1] [2][2] [2][3] [2][4] 
+	 * [3][0] [3][1] [3][2] [3][3] [3][4]
+	 * [4][0] [4][1] [4][2] [4][3] [4][4]
+	 */
+
+	
+	public void practice1() {
+		int[][] arr = new int[5][5];
+		int num = 1;
+		for (int i=0; i<arr.length; i++) {
+			for(int j=0; j<arr[i].length; j++) {
+				arr[i][j] = (j*5)+num;
+			} num++;
+		}
 		
+		
+		for(int i=0; i<arr.length; i++) {
+			for(int j=0; j<arr[i].length; j++) {
+				System.out.print(arr[i][j]+" ");
+			} System.out.println();
+		}
+		
+	}
+	
 	
 	
 
