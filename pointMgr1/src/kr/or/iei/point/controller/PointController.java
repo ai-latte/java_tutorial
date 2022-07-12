@@ -1,20 +1,24 @@
 package kr.or.iei.point.controller;
-import kr.or.iei.point.vo.Silver;
+import kr.or.iei.point.vo.*;
 import java.util.Scanner;
 public class PointController {
 	
-	Silver[] silverMember;
-	Scanner sc;
-	int index;
-	double bonus;
+	private Silver[] sMembers;
+	private int sIndex; // 자동 0으로 초기화
+	private Gold[] gMembers;
+	private int gIndex;
+	private Vip[] vMembers;
+	private int vIndex;
+	private Scanner sc;
+	private int flag;
 	
 	public PointController() {
-		silverMember = new Silver[10];
+		sMembers = new Silver[10];
+		gMembers = new Gold[10];
+		vMembers = new Vip[10];
 		sc = new Scanner(System.in);
-		index = 0;
-		bonus = 0;
 	}
-	
+
 	public void main() {
 		while(true) {
 		System.out.println("====== 포인트 관리 프로그램v1 ======");
@@ -26,22 +30,22 @@ public class PointController {
 		System.out.println("0. 프로그램 종료");
 		System.out.print("선택 > ");
 		int sel = sc.nextInt();
-		
+
 		switch(sel) {
 		case 1 :
-			insertMenber();
+			insertMember();
 			break;
 		case 2 :
-			printAllSilverMember();
+			printAllMember();
 			break;
 		case 3 :
-			printOneSilverMember();
+			printOneMember();
 			break;
 		case 4 :
-			updateSilvermember();
+			updateMember();
 			break;
 		case 5 :
-			deleteSilverMember();
+			deleteMember();
 			break;
 		case 0 :
 			System.out.println("프로그램을 종료합니다");
@@ -54,87 +58,233 @@ public class PointController {
 	}
 	
 	
-	public void insertMenber() {
+	public void insertMember() {
 		System.out.println("====== 회원 정보 등록 ======");
-		System.out.print("회원 등급 입력 : ");
+		System.out.print("회원 등급 입력 [silver/gold/vip]: ");
 		String grade = sc.next();
 		System.out.print("회원 이름 입력 : ");
 		String name = sc.next();
 		System.out.print("회원 포인트 입력 : ");
 		int point = sc.nextInt();
-		Silver s = new Silver(grade, name, point);
-		silverMember[index] = s;
-		index++;
+		switch(grade) {
+		case "silver" :
+			Silver s = new Silver(grade, name, point);
+			sMembers[sIndex] = s;
+			sIndex++;
+			break;
+		case "gold" :
+			Gold g = new Gold(grade, name, point);
+			gMembers[gIndex] = g;
+			gIndex++;
+			break;
+		case "vip" :
+			Vip v = new Vip(grade, name, point);
+			vMembers[vIndex] = v;
+			vIndex++;
+			break;
+		}
 		System.out.println("회원 정보 입력 완료 !");
 	}
 	
 	
-	public void printAllSilverMember() {
-		System.out.println("====== 전체 회원 출력 ======");
+	public void printAllMember() {
+		System.out.println("======== 전체 회원 출력 ========");
 		System.out.println("등급\t이름\t포인트\t보너스");
-		System.out.println("-------------------------");
-		for(int i=0; i<index; i++) {
-			System.out.println(silverMember[i].getGrade()+"\t"+silverMember[i].getName()+"\t"+silverMember[i].getPoint()+"\t"+silverMember[i].getBonus());
+		System.out.println("----------------------------");
+		for(int i=0; i<sIndex; i++) {
+			System.out.println(sMembers[i].getGrade()+"\t"+sMembers[i].getName()+"\t"+sMembers[i].getPoint()+"\t"+sMembers[i].getBonus());
+		}
+		for(int i=0; i<gIndex; i++) {
+			System.out.println(gMembers[i].getGrade()+"\t"+gMembers[i].getName()+"\t"+gMembers[i].getPoint()+"\t"+gMembers[i].getBonus());
+		}
+		for(int i=0; i<vIndex; i++) {
+			System.out.println(vMembers[i].getGrade()+"\t"+vMembers[i].getName()+"\t"+vMembers[i].getPoint()+"\t"+vMembers[i].getBonus());
 		}
 	}
 
 	
-	public void printOneSilverMember() {
+	public void printOneMember() {
 		System.out.println("====== 회원 정보 출력 ======");
 		System.out.print("조회할 회원 이름 입력 : ");
-		int searchIndex = searchMember(sc.next());
+		int searchIndex = searchMember1(sc.next());
 		if(searchIndex==-1) {
 			System.out.println("해당 회원을 찾을 수 없습니다.");
 		} else {
-			System.out.println("회원 등급  : "+silverMember[searchIndex].getGrade());
-			System.out.println("회원 이름  : "+silverMember[searchIndex].getName());
-			System.out.println("회원 포인트 : "+silverMember[searchIndex].getPoint());
-			System.out.println("회원 보너스 : "+silverMember[searchIndex].getBonus());
+			if((searchIndex/100) == 1) { //silver
+			searchIndex-=100;
+			System.out.println("회원 등급  : "+vMembers[searchIndex].getGrade());
+			System.out.println("회원 이름  : "+vMembers[searchIndex].getName());
+			System.out.println("회원 포인트 : "+vMembers[searchIndex].getPoint());
+			System.out.println("회원 보너스 : "+vMembers[searchIndex].getBonus());
+			} else if(searchIndex/10==1) {
+			searchIndex-=10;
+			System.out.println("회원 등급  : "+gMembers[searchIndex].getGrade());
+			System.out.println("회원 이름  : "+gMembers[searchIndex].getName());
+			System.out.println("회원 포인트 : "+gMembers[searchIndex].getPoint());
+			System.out.println("회원 보너스 : "+gMembers[searchIndex].getBonus());
+			} else { 
+			System.out.println("회원 등급  : "+sMembers[searchIndex].getGrade());
+			System.out.println("회원 이름  : "+sMembers[searchIndex].getName());
+			System.out.println("회원 포인트 : "+sMembers[searchIndex].getPoint());
+			System.out.println("회원 보너스 : "+sMembers[searchIndex].getBonus());
+			}
 		}
 	}
 	
 	
-	public void updateSilvermember() {
-		System.out.println("====== 회원 정보 출력 ======");
-		System.out.print("조회할 회원 이름 입력 : ");
-		int searchIndex = searchMember(sc.next());
-		if(searchIndex==-1) {
+	// searchIndex3번 사용
+	// [0][0] 조회X [1][i] silver [2][i] gold [3][i] vip
+	// 객체가 바뀌어야 보너스도 바뀐다
+	public void updateMember() {
+		System.out.println("======== 회원 정보 수정 ========");
+		System.out.print("수정할 회원 이름 입력 : ");
+		int[] result = searchMember3(sc.next());
+		if(result[0] == 0) {
 			System.out.println("해당 회원을 찾을 수 없습니다.");
 		} else {
-			System.out.print("변경할 등급 입력  : ");
-			silverMember[searchIndex].setGrade(sc.next());
+			if(result[0] == 1) { // silver // 삭제 먼저 해주고
+				for(int i=result[1]; i<sIndex-1; i++) {  // result[1] == silver의 인덱스
+					sMembers[i] = sMembers[i+1];
+				}
+			} else if(result[0] == 2) {
+				for(int i=result[1]; i<gIndex-1; i++) {
+					gMembers[i] = gMembers[i+1];
+				}
+			}else if(result[0] == 3) {
+				for(int i=result[1]; i<vIndex-1; i++) {
+					vMembers[i] = vMembers[i+1];
+			}
+			System.out.println("삭제 완료");
+			// 새로운 등급의 객체를 받는다
+			System.out.print("변경할 등급 입력 : ");
+			String grade = sc.next();
 			System.out.print("변경할 이름 입력  : ");
-			silverMember[searchIndex].setName(sc.next());
+			String updateName = sc.next();
 			System.out.print("변경할 포인트 입력 : ");
-			silverMember[searchIndex].setPoint(sc.nextInt());
-			System.out.println("\n정보 수정이 완료되었습니다.");
+			int point = sc.nextInt();
+			switch(grade) {
+				case "silver" :
+					Silver s = new Silver(grade, updateName, point);
+					sMembers[sIndex] = s;
+					sIndex++;
+					break;
+				case "gold" :
+					Gold g = new Gold(grade, updateName, point);
+					gMembers[gIndex++] = g;
+					break;
+				case "vip" :
+					vMembers[vIndex++] = new Vip(grade, updateName, point);
+					break;
+				}
+			}
 		}
+		
 	}
 	
 	
-	public void deleteSilverMember() {
+	
+	public void deleteMember() {
 		System.out.println("====== 회원 정보 삭제 ======");
 		System.out.print("조회할 회원 이름 입력 : ");
-		int searchIndex = searchMember(sc.next());
+		int searchIndex = searchMember2(sc.next());
 		if(searchIndex==-1) {
 			System.out.println("해당 회원을 찾을 수 없습니다.");
 		} else {
-			for(int i=searchIndex; i<index-1; i++) {
-				silverMember[i] = silverMember[i+1];
-			} index--;
-			System.out.println(" 삭제 완료 ");
+			if(flag == 1) {
+				for(int i=searchIndex; i<sIndex-1; i++) {
+					sMembers[i] = sMembers[i+1];
+				}
+				sIndex--;
+			}else if(flag == 2) {
+				for(int i=searchIndex; i<gIndex-1; i++) {
+					gMembers[i] = gMembers[i+1];
+				}
+				gIndex--;
+			}else if(flag == 3) {
+				for(int i=searchIndex; i<vIndex-1; i++) {
+					vMembers[i] = vMembers[i+1];
+				}
+				vIndex--;
+			}
+			System.out.println(" 삭 제 완 료 ! ");
 		}
 	}
 	
 	
-	public int searchMember(String name) {
-		for(int i=0; i<index; i++) {
-			if(name.equals(silverMember[i].getName())) {
+	
+	// 1) 1~9 / 10~19 / 100~109확장성 없음 사용 안 함
+	public int searchMember1(String name) {
+		for(int i=0; i<sIndex; i++) {
+			if(name.equals(sMembers[i].getName())) {
 				return i;
-			} 
+			}
+		}
+		for(int i=0; i<gIndex; i++) {
+			if(name.equals(gMembers[i].getName())) {
+					return i+10;
+				}
+		}
+				
+		for(int i=0; i<vIndex; i++) {
+				if(name.equals(vMembers[i].getName())) {
+					return i+100;
+				} 
 		} return -1;
 	}
 	
 	
-	
+	// 2) 신호를 주는 방법
+	public int searchMember2(String name) {
+		for(int i=0; i<sIndex; i++) {
+			if(name.equals(sMembers[i].getName())) {
+				flag = 1;
+				return i;
+			}
+		}
+		for(int i=0; i<gIndex; i++) {
+			if(name.equals(gMembers[i].getName())) {
+				flag = 2;
+				return i;
+				}
+		}
+				
+		for(int i=0; i<vIndex; i++) {
+			if(name.equals(vMembers[i].getName())) {
+				flag = 3;
+				return i;
+				} 
+		} return -1;
+	}
+
+
+	// 3) 배열 리턴
+	// 0번 인덱스는 어떤 배열인지 / 1번 인덱스는 몇 번 인덱스인지
+	public int[] searchMember3(String name) {
+		int[] result = new int[2];
+		for(int i=0; i<sIndex; i++) {
+			if(name.equals(sMembers[i].getName())) {
+				result[0] = 1;
+				result[1] = i;
+				return result;
+			}
+		}
+		for(int i=0; i<gIndex; i++) {
+			if(name.equals(gMembers[i].getName())) {
+				result[0] = 2;
+				result[1] = i;
+				return result;
+				}
+		}
+				
+		for(int i=0; i<vIndex; i++) {
+			if(name.equals(vMembers[i].getName())) {
+				result[0] = 3;
+				result[1] = i;
+				return result;
+				} 
+		} return result;
+	}
+
+
+
 }

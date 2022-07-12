@@ -1,28 +1,28 @@
 package kr.or.iei.point.vo;
 
-public class Silver {
-	private String name;
+public class Gold {
 	private String grade;
+	private String name;
 	private int point;
 	
-	// 1. 기본 생성자
-	public Silver() {
+	public Gold() {
+		
 	}
 	
-	// 2. 매개변수가 다있는 생성자
-	public Silver(String grade, String name, int point) {
+	public Gold(String grade, String name, int point) {
 		this.grade = grade;
 		this.name = name;
 		this.point = point;
 	}
 	
-	// 3. getter setter
-	public String getName() {
-		return name;
-	}
+	//3.getter setter
 	
 	public String getGrade() {
 		return grade;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public int getPoint() {
@@ -30,7 +30,11 @@ public class Silver {
 	}
 	
 	public double getBonus() {
-		return point*0.02;
+		return point*0.05;
+	}
+	
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	
 	public void setName(String name) {
@@ -39,9 +43,5 @@ public class Silver {
 	
 	public void setPoint(int point) {
 		this.point = point;
-	}
-	
-	public void setGrade(String grade) {
-		this.grade = grade;
 	}
 }
