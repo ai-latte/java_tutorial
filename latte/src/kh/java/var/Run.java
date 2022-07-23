@@ -1,11 +1,10 @@
 package kh.java.var;
 import kh.java.function.Example;
+import kh.java.function.MethodTest;
 public class Run {
 
 	public static void main(String[] args) {
-		Example ex = new Example();
-		ex.exam1();
-		ex.exam2();
-		ex.exam3();
+		MethodTest mt = new MethodTest();
+		System.out.println(mt.getA());
 	}
 }

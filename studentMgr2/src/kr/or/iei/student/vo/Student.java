@@ -42,4 +42,10 @@ public class Student {
 		this.addr = addr;
 	}
 	
+	@Override
+	public String toString() { // <<object클래스의 오버라이딩>>
+		String str = name+"\t"+age+"\t"+addr;
+		return str;
+	}
+	
 }// 클래스 끝
